@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scacchiera JS LALALA</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <style>
+        body {
+            text-align: center;
+            background: rgb(245,42,42);
+background: linear-gradient(90deg, rgba(245,42,42,1) 0%, rgba(255,165,40,1) 15%, rgba(254,255,23,1) 31%, rgba(8,255,90,1) 47%, rgba(35,251,255,1) 65%, rgba(84,42,255,1) 85%, rgba(189,8,255,1) 100%);
+            color: #fff;
+        }
+
+        input, button {
+            border: none;
+            color: #000;
+        }
+
+        .controlli {
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-spacing: 0;
+            border: 2px solid #000;
+            margin: 0 auto;
+        }
+        td {
+            width: 70px;
+            height: 70px;
+        }
+        td.white {
+            background-color: #fff;
+        }
+        td.black {
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Crea la tua scacchiera con JS perchè PHP fa cacare</h1>
+    <div class="controlli">
+        ♟️Righe: <input type="number" id="righe" min="1"></input>
+        ♟️Colonne: <input type="number" id="colonne" min="1"></input>
+        <button id="disegna">➡️</button>
+    </div>
+
+    <div id="scacchiera"></div>
+
+    <script>
+        let inputRighe = document.getElementById("righe");
+        let inputColonne = document.getElementById("colonne");
+        let btnDisegna = document.getElementById("disegna");
+        let containerScacchiera = document.getElementById("scacchiera");
+
+        btnDisegna.onclick = function() {
+            let numRighe = inputRighe.value;
+            let numColonne = inputColonne.value;
+            drawScacchiera(numRighe,numColonne);
+        };
+
+        function drawScacchiera(numRighe, numColonne) {
+            let htmlScacchiera = "<table>"
+            for(let i = 0; i < numRighe; i++) {
+                htmlScacchiera += "<tr>";
+                for(let j = 0; j < numColonne; j++) {
+                    if ((i + j) % 2 == 0) {
+                        htmlScacchiera += "<td class='white'></td>";
+                    } else {
+                        htmlScacchiera += "<td class='black'></td>";
+                    };
+                }
+                htmlScacchiera += "</tr>";
+            }
+            htmlScacchiera += "</table>";
+            containerScacchiera.innerHTML = htmlScacchiera;
+        }
+    </script>
+</body>
+</html>

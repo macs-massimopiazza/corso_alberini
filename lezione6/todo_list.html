@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <style>
+        span {
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>TODO LIST</h1>
+    <input type="text" id="todo_new"><button id="todo_add">➕</button>
+    <div id="todo_container"></div>
+    <script>
+        let todo_list = [];
+        let todo_add = document.getElementById("todo_add");
+        let todo_new = document.getElementById("todo_new");
+        let todo_container = document.getElementById("todo_container");
+
+        //quanto premi enter fa un click a bottone add
+        todo_new.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+             event.preventDefault();
+             todo_add.click();
+            }
+        });
+
+        todo_add.onclick = function() {
+            if (todo_new.value == "") {
+                return;
+            }
+            let task = todo_new.value;
+            todo_list.push(task);
+            updateList(todo_list);
+            todo_new.value = "";
+        };
+
+        function updateList(array){
+            let htmlList = "<p>";
+            todo_list.forEach((todo, index) => {
+                //htmlList += "<p>";
+                htmlList += "<span data-index=" + index + " onclick='deleteTodo(" + index + ")'>✖️</span>";
+                htmlList += todo;
+                htmlList += "</br>";
+            });   
+            htmlList += "</p>";
+            todo_container.innerHTML = htmlList;
+        };
+
+        function deleteTodo(index) {
+            todo_list.splice(index, 1);
+            updateList(todo_list);
+        };
+    </script>
+</body>
+</html>

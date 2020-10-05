@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <style>
+        body {
+            text-align: center;
+            background: rgb(42,84,245);
+            background: linear-gradient(90deg, rgba(42,84,245,1) 0%, rgba(29,253,103,1) 50%, rgba(255,160,8,1) 100%);;
+            color: #fff;
+        }
+        .line{
+            display: inline-block;
+        }
+        #contatore {
+            font-size: 300px;
+            font-weight: 700;
+        
+        }
+        h1 {
+            font-size: 50px;
+            text-transform: uppercase;
+            margin-bottom: 0.5em;
+            user-select: none;
+        }
+        span {
+            font-size: 30px;
+            cursor: pointer;
+            user-select: none;
+        }
+        #menu, #piu {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contatore</h1>
+    <div id="comandi">
+    <span id="meno" class="line">➖</span>
+    <span id="piu" class="line">➕</span>
+    </div>
+    <h2 id="contatore"></h2>
+    
+
+    <script>
+        var contatore = document.getElementById("contatore");
+        var meno = document.getElementById("meno");
+        var piu = document.getElementById("piu");
+        var counter = 0;
+        console.log(contatore);
+
+        meno.onclick = function() {
+            counter -= 1;
+            contatore.innerText = counter;
+        };
+
+        piu.onclick = function() {
+            counter += 1;
+            contatore.innerText = counter;
+        };
+
+    </script>
+</body>
+</html>

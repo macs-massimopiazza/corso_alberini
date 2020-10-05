@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💻Javascript intro💻</title>
+</head>
+<body>
+    <h1>Metti il tuo nome</h1>
+    <input type="text" name="nome" placeholder="Inserisci il tuo nume">
+    </input>
+    <button id="stampanome">Stampa</button>
+    <h2 id="saluto"></h2>
+    <script>
+        console.log("Ciao massimino!🥰")
+        
+        var variabile = "ciao"; //definisce variabili globali
+        let variabile2 = "ciao"; //definisce variabile locale allo scope (insieme parentesi graffe) in cui è definita
+        //impariamo ad usare let che è bello
+
+        //Array
+        let lista = [1,2,3,4,5,6]
+
+        //Oggetto (array associativo)
+        let ogg = {
+            "chiave": "valore",
+            chiave: "valore", //possimao usare la chiave cosi quando non ha caratteri speciali
+        };
+
+        //Funzione
+        let nomeFunzione = function(){
+            console.log("sono dentro a una funzione");
+        }
+        //richiamo funzione
+        nomeFunzione();
+
+        //operazioni tra numeri
+        let numA = 10;
+        let numB = 2;
+
+        let sum = numA + numB;
+        let sottr = numA - numB;
+        let prod = numA * numB;
+        let div = numA / numB;
+        let potenza = numA**numB;
+        let modulo = numA % numB;
+        //fra si che numApari sia booleano (per dire se è pari o dispari)
+        let numApari = numA % 2 == 0; // == fa un confronto tra il val a dx e sx
+
+        //operazioni tra booleani
+        let vero = true;
+        let falso = false;
+
+        let and = vero && falso; //fa falso
+        let or = vero || falso; //fa vero
+        let not = !true //fa falso
+        let confronto = vero == falso;
+
+        //operazioni tra stringhe
+        let strA = "ci";
+        let strB = "ao";
+
+        let concat = strA + strB;
+        let molt = strA * 10;
+
+        //operazioni con array
+        let array = [];
+
+        array.push("ciaone"); //concatenare elemento in array
+        console.log(array);
+        console.log(array.length);
+
+        //array.splice(0, 1); //elimina elemento dell'array (indice, quanti elementi dopo vuoi eliminare)
+        //console.log(array);
+        //console.log(array.length);
+
+        let element = array[0];
+        console.log(element);
+
+        //definizione della funzione
+        function nome() {
+            let dentroNome = "ciaoneoir329t8";
+            console.log(dentroNome);
+        }
+
+        nome();
+
+        //selezione (cicli)
+        let entra = true;
+        if (!entra) {
+            console.log("sono entrato nel ciclo");
+        } else {
+            console.log("non sono entrato nel ciclo");
+        }
+
+        let giornoSettimana = "ven";
+
+        switch (giornoSettimana) {
+            case 'lun':
+                console.log("E' lunedi");
+                break;
+            case 'mar':
+                console.log("E' martedi");
+                break;
+            default: 
+                console.log("E'" + giornoSettimana);
+        }
+  
+        //iterazione
+
+        for (let i = 1; i < 10; i++) {
+            console.log("indice: " + i)
+        }
+        
+        /*var dendro = true;
+        var j = 0;
+        while (dendro) {
+            console.log("indice a " + j);
+            j++;
+            if (j == 100) {
+                dendro = falso;
+            }
+        }
+        */
+
+        let listaBella = [1,2,3,4,5,6];
+        //vecchia
+        listaBella.forEach(function(elemento){
+            console.log(elemento);
+        });
+        //nuova
+        listaBella.forEach((elemento, index) => {
+            console.log("Elemento:" + elemento + "<br>Indice: " + index);
+        });
+
+        //modifiche della pagina in javascript vanilla
+        //con [0] stampa il primo elemento che trova, come qualsiasi array
+        let titolo = document.getElementsByTagName("h1")[0];
+        console.log(titolo);
+        //prendi quello che c'è dentro al pezzo html
+        console.log(titolo.innerHTML);
+
+        //interazione con input
+        let button = document.getElementById("stampanome");
+        button.onclick = function() {
+            let input = document.getElementsByName("nome")[0];
+            let saluto = document.getElementById("saluto");
+            saluto.innerText = "Ciaone, " + input.value;
+        }
+    </script>
+</body>
+</html>
