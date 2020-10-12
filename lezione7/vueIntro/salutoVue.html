@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>helloworld vue.js🥳</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="nome">
+        <button @click="showName()">Show Name</button>
+        <h2>{{ saluto }}</h2>
+        <h2>Ciao, {{ nome }}!</h2>
+    </div>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    nome: "",
+                    saluto: "",
+                }
+            },
+            methods: {
+                showName: function() {
+                    this.saluto = "Ciao, " +  this.nome + "!";
+                }
+            }
+        });
+    </script>
+</body>
+</html>

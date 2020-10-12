@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- view (vista) -->
+    <div id="app">
+        {{ message }}
+    <h2>
+        Righe: {{ numRighe }}<br>
+        Colonne: {{ numColonne }}
+    </h2>
+    <button @click="btnClick">ClickMEEEEEEE :)</button><br>
+
+    <h4>2 way data binding</h4>
+    <input type="text" name="nome2" v-model="message"></input>
+    </div>
+    <script>
+        //vue js si basa sui componenti, tutto è un componente e vengono messi insieme
+        //controller (che mette insieme view e model)
+        let app = new Vue({
+            el: "#app",
+            data() {
+                //model (modello)
+                return {
+                    message: "Ciao frate",
+                    numColonne: 4,
+                    numRighe: 6,
+                }
+            },
+            //le funzioni vengono definite in methods
+            methods: {
+                btnClick: function() {
+                    this.message = "Helloooo";
+                    this.printNewName("ciaone")
+                },
+                printNewName: function(name) {
+                    //eviti è l'evento
+                    console.log(evt.target.value);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

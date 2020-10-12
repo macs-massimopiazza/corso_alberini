@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cecca la casella</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        table {
+            border-spacing: 0;
+            border: 1px solid #000;
+            margin: 0 auto;
+        }
+        td.casella {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+
+        #red, #green, #blue {
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+            cursor: pointer;
+        }
+        #red {
+            background-color: #ff0000;
+        }
+        #green {
+            background-color: #00ff00;
+        }
+        #blue {
+            background-color: #0000ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cecca la casellaaa</h1>
+    <div class="container">
+        <div class="colors">
+            <div class="color" id="red"></div>
+            <div class="color" id="green"></div>
+            <div class="color" id="blue"></div>
+        </div>
+        <div class="controls">
+            <input type="number" id="rows" min="1"></input>
+            <input type="number" id="columns" min="1"></input>
+            <button id="draw">Draw</button>
+            <button id="reset">Reset</button>
+        </div>
+    </div>
+    <div id="gridContainer"></div>
+    <script>
+        let inputRows = document.getElementById("rows");
+        let inputColumns = document.getElementById("columns");
+        let btnDraw = document.getElementById("draw");
+        let btnReset = document.getElementById("reset");
+        let gridContainer = document.getElementById("gridContainer");
+        let casella = document.getElementsByClassName("casella");
+        let boxColor = document.getElementsByClassName("color");
+        var selectedColor = "";
+
+        btnDraw.onclick = function() {
+            let numRows = inputRows.value;
+            let numColumns = inputColumns.value;
+            drawScacchiera(numRows, numColumns);
+        };
+
+        btnReset.onclick = function() {
+            let numRows = inputRows.value;
+            let numColumns = inputColumns.value;
+            drawScacchiera(numRows, numColumns);
+        };
+
+        window.onclick = e => {
+            //console.log(e.target);  // to get the element
+            let redColorBox = document.getElementsByClassName("red");
+            let greenColorBox = document.getElementsByClassName("green");
+            let blueColorBox = document.getElementsByClassName("blue");
+            if(e.target.id == "red") {
+                //e.target.style.outline = "6px solid #a64dff";
+                //e.target.style.outlineOffset = "-6px";
+                selectedColor = "#ff0000";
+            } else if(e.target.id == "green") {
+                selectedColor = "#00ff00";
+            } else if(e.target.id == "blue") {
+                selectedColor = "#0000ff";
+            }
+            if(e.target.className == "casella"){
+                drawCasella(e.target);
+            }
+        }
+
+        function drawCasella(casella) {
+            casella.style.backgroundColor = selectedColor;
+        };
+
+        function drawScacchiera(numRows, numColumns) {
+            let htmlGrid = "<table>"
+            let count = 0;
+            for(let i = 0; i < numRows; i++) {
+                htmlGrid += "<tr>";
+                for(let j = 0; j < numColumns; j++) {
+                        htmlGrid += "<td class='casella' data-index='" + count + "'></td>";
+                        count++;
+                }
+                htmlGrid += "</tr>";
+            }
+            htmlGrid += "</table>";
+            gridContainer.innerHTML = htmlGrid;
+        }
+        
+    </script>
+</body>
+</html>
