@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-for="(elem, index) in coseDaSapere" style="font-weight: bold">
+            {{index+1}}. {{elem}}
+        </div>
+        <button class="btn btn-info" @click="adda()">Aggiungi il pipistrello</button>
+    </div>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    coseDaSapere: [
+                        "sono etero",
+                        "ho la ragazza",
+                        "mi piacciono i funghi",
+                        "e anche il gelato",
+                    ],
+                }
+            },
+            methods: {
+                adda() {
+                    this.coseDaSapere.push("🦇");
+                }
+            }
+        });
+    </script>
+</body>
+</html>

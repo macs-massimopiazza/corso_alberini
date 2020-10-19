@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model | dataBinding</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        body {
+            text-align: center;
+            font-size: 30px;
+        }
+        button {
+            font-size: 30px;
+        }
+        .btn {
+            font-weight: 900;
+        }
+        p {
+            font-size: 50px;
+            font-weight: 900;
+        }
+        #app {
+            margin-top: 40px;
+        }
+        input {
+            border: 2px solid crimson;
+            border-radius: 8px;
+            padding: 10px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background-color: #ffb0b08f;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="nome" placeholder="nome">
+        <input type="number" v-model="anni" placeholder="età"><br>
+        <button class="btn btn-danger" @click="aggiornaFrase()">Aggiorna</button>
+        <p>
+            Ciao, {{nome}} hai {{anni}} anni :)
+        </p>
+        <p>{{frase}}</p>
+    </div>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    nome: "",
+                    anni: 0,
+                    frase: "",
+                }
+            },
+            methods: {
+                aggiornaFrase() {
+                    this.frase = `Ciao, ${this.nome} hai ${this.anni} anni :)`;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
