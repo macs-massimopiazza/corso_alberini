@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="task">
+        <button @click="aggiungiTask()" :disabled="task === ''" :class="task === '' ? 'red' : 'green'">Invia</button>
+
+        <ul >
+            <li v-for="(task, index) in listaTask"> 
+                <span>{{ task }}</span>
+                <button @click="removeTask(index)">x</button>  
+            </li> 
+        </ul>
+
+    </div> 
+    <script>
+        let app = new Vue({
+           el: "#app",
+           data(){
+                return{
+                    task : "",
+                    listaTask : [
+                        "bere",
+                        "lavorare",
+                        "bere"
+                    ]
+                }
+           },
+           created(){
+               console.log("componenteCreato");
+           },
+           mounted(){
+                console.log("componenteMontato");
+                this.listaTask.push("dormire");
+                this.listaTask.push("bere");
+           },
+           methods:{
+                aggiungiTask(){
+                    this.listaTask.push(this.task);
+                    this.task = "";
+                },
+                removeTask(index){
+                    this.listaTask.splice(index, 1)
+                }
+           } 
+        });
+        
+    </script> 
+</body>
+</html>

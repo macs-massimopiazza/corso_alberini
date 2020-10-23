@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo bellissima</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        body{
+            text-align: center;
+        }
+
+        button {
+            border: 0;
+            background: none;
+        }
+
+        button:active {
+            outline: none;
+        }
+        
+
+        table{
+            /* border: solid 1px black; */
+            display: block;
+            margin: 30px;
+        }
+
+        .tableContainer {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        h1 {
+            background: rgb(255,165,40);
+            background: linear-gradient(270deg, rgba(255,165,40,1) 13%, rgba(251,255,55,1) 29%, rgba(8,255,90,1) 50%, rgba(35,251,255,1) 71%, rgba(189,8,255,1) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>MA CHE BELLA TODO</h1>
+        <div class="tableContainer">
+            <table>
+                <tr>
+                    <th>Todo {{list.length}}</th>
+                    <th>🙅‍♂️</th>
+                </tr>
+                <tr v-for="(elem, index) in list">
+                    <td>{{ elem }}</td>
+                    <td><button @click="archive(index)">✅</button></td>
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <th>Archiviate {{archived.length}}</th>
+                    <th>🙅‍♂️</th>
+                </tr>
+                <tr v-for="(elem, index) in archived">
+                    <td>{{ elem }}</td>
+                    <td><button @click="byeTodo(index)">❌</button></td>
+                </tr>
+            </table>
+         </div>
+        <div>
+            <label>nuovo task:</label>
+            <input type="text" name="add" id="add" v-model="newEl"><button :disabled="newEl === ''" @click="push(newEl)">➡️</button>
+        </div>
+
+        <div v-if="archived.length > list.length">
+            <strong>Continua così mr Dragonite!</strong>
+        </div>
+    </div>
+    
+    <script>
+        //todo agiungi numeraggio todo da fare o archiviate
+        let app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    list:[],
+                    archived: [],
+                    newEl: '',
+                }
+            },
+            methods: {
+                push(x){
+                    this.list.push(x);
+                },
+                archive(x){
+                    this.archived.push(this.list[x]);
+                    this.list.splice(x,1);
+                    this.newEl = '';
+                },
+                byeTodo(x){
+                    this.archived.splice(x,1);
+                    this.newEl = '';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

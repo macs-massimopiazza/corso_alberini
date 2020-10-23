@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>v-if</title>
+    <title>todo</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .red {
+            background-color: #ff0000;
+        }
+        .blue {
+            background-color: #0000ff;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        <input type="text" v-model="elementoTodo"><button @click="addTodo">➕</button>
+        <input type="text" v-model="elementoTodo"><button @click="addTodo" :disabled="elementoTodo===''" :class="elementoTodo === '' ? 'red' : 'blue'">➕</button>
         <p>Cosa devo fare:</p>
-        <ul v-for="todoEl in todoList">
-            <li>{{ todoEl }}</li>
+        <ul>
+            <li v-for="todoEl in todoList">{{ todoEl }}</li>
         </ul>
     </div>
     <script>
@@ -27,6 +35,7 @@
             methods: {
                 addTodo() {
                     this.todoList.push(this.elementoTodo);
+                    this.elementoTodo = "";
                 }
             }
         });
