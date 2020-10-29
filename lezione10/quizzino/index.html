@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>current selected</title>
+    <title>❓       Gerry Scotti Quiz       ❓</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     
 </head>
@@ -13,24 +20,21 @@
     <div id="app">
 
         <div v-if="currentView === 'quiz'">
-            <h1>current quiz: {{currentQuizIndex + 1}}</h1>
+            <!-- <h1>current quiz: {{currentQuizIndex + 1}}</h1> -->
         
             <div class="progressbar">
-                <div class="node" v-for="(q, index) in quizList">
-                    <div class="circle" 
-                    :class="{
-                        'active' : index === currentQuizIndex,
-                    }">
-                        {{index + 1}}
-                    </div>
+                <div class="node" v-for="(q, index) in quizList" :class="{
+                    'active' : index === currentQuizIndex,
+                }">
+                        <h1>{{index + 1}}</h1>
                 </div>
             </div>
 
             <div class="quiz">
-                {{currentQuiz.quiz}}
+                {{currentQuiz.quiz}}🤔
             </div>
             
-            <pre>{{risposte}}</pre>
+            <!-- <pre>{{risposte}}</pre> -->
             
             <div class="answer-wrapp">
                 <div class="answer" v-for="r in currentQuiz.choices">
@@ -42,13 +46,14 @@
             </div>
             
 
-            <button id="back" class="movement-btn" @click="retrocedi()" :disabled = "canGoBack">indietro</button>
+            <button id="back" class="movement-btn" @click="retrocedi()" :disabled = "canGoBack">Indietro</button>
             <button id="next" class="movement-btn" @click="avanza()" :disabled = "canGoNext">{{nextButtonLabel}}</button>
         
         </div>
-        <div v-if="currentView === 'result'">
-            <h1>Congratz! hai completato il quiz!</h1>
+        <div class="containerNewGame" v-if="currentView === 'result'">
+            <h1>🥳🥳🥳🥳Bravo! hai completato il quiz!🥳🥳🥳🥳</h1>
             <h1>Score: {{score}} / {{quizList.length}}</h1>
+            <img src="https://www.repstatic.it/content/nazionale/img/2020/10/26/133814518-8fe63890-b6e7-41a4-bda8-bc81ae00c92b.jpg"><br>
             <button @click="newGame()">Gioca di Nuovo!</button>
         </div>
     </div>

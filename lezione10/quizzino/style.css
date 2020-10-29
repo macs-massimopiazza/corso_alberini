@@ -10,56 +10,65 @@
 .progressbar{
     width: 100%;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    background: #8ccaff;
+    color: #fff;
 }
+
 .node{
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-}
-
-.circle{
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    border: solid 1px green;
+    flex-grow: 1;
     text-align: center;
-    line-height: 30px;
+    padding: 20px;
+    border-radius: 20px;
 }
 
-.active{
-    background-color: green;
-    color: white;
+.active {
+    background: #2499ff;
+}
+
+.active h1 {
     font-weight: 700;
 }
+
 .quiz{
-    width: 100%;
     text-align: center;
-    font-size: 30px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 40px;
     padding: 30px;
 }
 
-#back{
-    
+.answer-wrapp {
+    margin-left: 25%;
+}
+
+.answer {
+    margin: 10px;
+}
+
+input[type=radio] {
+    margin: 4px 6px 0;
+    font-size: 50px;
+}
+.answer label {
+    font-size: 30px;
 }
 #next{
     left: calc(100% - 200px);
 }
 
 .movement-btn{
-    background-color: rgba(0,255,0,0.5);
+    background: #2499ff;
     border: none;
     height: 100px;
     width: 200px;
     position: absolute;
     top: calc(100% - 100px);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 20px;
 }
 .movement-btn:hover{
-    background-color: rgba(0,255,0,0.5);
+    background: #2499ff;
 }
 .movement-btn:focus{
     outline: none;
@@ -68,5 +77,26 @@
     outline: none;
 }
 .movement-btn:disabled{
-    background-color: rgba(0,255,0,0.2);
+    background: #8cc9ffb2;
+    font-weight: 400;
+}
+
+.containerNewGame {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.containerNewGame img {
+    border: 5px solid #2499ff;
+    border-radius: 5px;
+}
+
+.containerNewGame button {
+    padding: 20px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #2499ff;
+    border: none;
+    margin-top: 50px;
+    border-radius: 5px;
 }

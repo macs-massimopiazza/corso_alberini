@@ -138,7 +138,7 @@ let app = new Vue({
             return this.currentQuizIndex === 0;
         },
         nextButtonLabel(){
-            return this.currentQuizIndex === this.quizList.length -1 ? 'Invia' : 'Avanza';
+            return this.currentQuizIndex === this.quizList.length -1 ? 'Invia' : 'Avanti';
         }
 
     }
